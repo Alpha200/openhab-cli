@@ -1,0 +1,25 @@
+{
+  "name": "openhab-cli",
+  "version": "0.1.0",
+  "description": "Command line tool to control your OpenHAB instance",
+  "main": "bin/openhab-cli",
+  "bin": {
+    "openhab-cli": "./bin/openhab-cli"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Sendzik",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "^1.0.9",
+    "node-fetch": "^1.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alpha200/openhab-cli.git"
+  },
+  "engines": {
+    "node": "6.* || 7.*"
+  }
+}

@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+"use strict";
+
+process.title = 'openhab-cli';
+
+const api = require('../api');
+
+const ArgumentParser = require('argparse').ArgumentParser;
+const parser = new ArgumentParser({
+  version: '0.1.0',
+  addHelp: true,
+  description: 'Command line tool to control your OpenHAB instance'
+});
+
+const subparsers = parser.addSubparsers({
+  title: 'subcommands',
+  dest: 'subcommand_name'
+});
+
+const send = subparsers.addParser('send', { aliases: ['s'], addHelp: true});
+
+send.addArgument('item', { help: 'item name' });
+send.addArgument('command', { nargs: '?', required: false, defaultValue: 'OFF', help: 'command (default: OFF)'});
+
+const list = subparsers.addParser('list', {aliases: ['l'], addHelp: true});
+
+const args = parser.parseArgs();
+
+if (args.subcommand_name == 'l' || args.subcommand_name == 'list') {
+  api.list();
+} else if (args.subcommand_name == 's' || args.subcommand_name == 'send') {
+  api.send(args.item, args.command);
+}
