@@ -1,7 +1,9 @@
 "use strict";
 
+const home = process.env[(process.platform == "win32") ? 'USERPROFILE' : 'HOME'];
+
 const fetch = require('node-fetch');
-const config = require(`${process.env.HOME}/.config/openhab-cli/config.json`);
+const config = require(`${home}/.config/openhab-cli/config.json`);
 
 module.exports = {
   send(item, command) {
